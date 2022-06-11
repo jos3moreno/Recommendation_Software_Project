@@ -1,3 +1,9 @@
+'''
+for business in businesses:
+    types_of_food.append([business["categories"][0]['title']])
+    restaurants_data.append([business["name"], business["rating"], business.get("price"),
+                             business["location"]["display_address"], business["is_closed"]])
+'''
 types_of_food = []
 
 restaurants_data = []
