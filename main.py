@@ -1,6 +1,7 @@
 import requests
 import json
 from LinkedList import *
+from data import *
 
 YELP_END_POINT = "https://api.yelp.com/v3/businesses/search"
 BUSINESS_DETAILS = "https://api.yelp.com/v3/businesses/{id}"
@@ -36,6 +37,31 @@ def populate_food_detail_lst():
 
 food_types = populate_food_type_lst()
 restaurants_info = populate_food_detail_lst()
-food_types.show_list()
-print("\n\n")
-restaurants_info.show_list()
+
+
+# The Purpose of this function is to return the index location of the node where
+# the user is looking for a food type with only one char, will return a dictionary
+# with the food_type as key (doesn't allow duplicates) and a [] with the indices where
+# food_type's occur
+def type_location_search(food_types_lst, char=None):
+    if food_types_lst.is_empty():
+        return
+    if len(char) > 1:
+        print('You have enter more than one character.')
+        print('Please enter a single character')
+        return
+    current = food_types_lst.get_head_node()
+    result = {}
+    count = 0
+    while current is not None:
+        if current.get_value()[0][0][0] == char.upper():
+            result.setdefault(current.get_value()[0], []).append(count)
+        current = current.next
+        count += 1
+    return result
+
+
+type_location_search(food_types, 'jo')
+
+for business in businesses:
+    types_of_food.append([business["categories"][0]['title']])

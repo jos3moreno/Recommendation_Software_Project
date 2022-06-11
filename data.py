@@ -29,5 +29,28 @@ restaurants_data = []
 ['The Boba Co', 4.0, '$', ['13526 Poway Rd', 'Ste A', 'Poway, CA 92064'], False]
 ['Iron Pan Thai Kitchen', 4.0, '$$', ['13538 Poway Rd', 'Ste A', 'Poway, CA 92064'], False]
 '''
-
+'''
+[
+    0. ['Barbeque']
+    1. ['Mediterranean']
+    2. ['Chicken Shop']
+    3. ['Ice Cream & Frozen Yogurt']
+    4. ['Creperies']
+    5. ['Bubble Tea']
+    6. ['Sushi Bars']
+    7. ['Mexican']
+    8. ['Japanese']
+    9. ['Mexican']
+    10. ['Juice Bars & Smoothies']
+    11. ['Coffee Roasteries']
+    12. ['Indian']
+    13. ['Hiking']
+    14. ['Breakfast & Brunch']
+    15. ['Bakeries']
+    16. ['Coffee Roasteries']
+    17. ['Korean']
+    18. ['Bubble Tea']
+    19. ['Thai']    
+]
+'''
 

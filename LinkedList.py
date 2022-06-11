@@ -8,6 +8,9 @@ class LinkedList:
     def is_empty(self):
         return self.head is None
 
+    def get_head_node(self):
+        return self.head
+
     def add_to_the_front(self, data):
         '''Add data to the list'''
         new_node = Node(data)
