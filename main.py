@@ -2,6 +2,7 @@ import requests
 import json
 from LinkedList import *
 from data import *
+from prettytable import PrettyTable
 
 YELP_END_POINT = "https://api.yelp.com/v3/businesses/search"
 BUSINESS_DETAILS = "https://api.yelp.com/v3/businesses/{id}"
@@ -43,25 +44,57 @@ restaurants_info = populate_food_detail_lst()
 # the user is looking for a food type with only one char, will return a dictionary
 # with the food_type as key (doesn't allow duplicates) and a [] with the indices where
 # food_type's occur
-def type_location_search(food_types_lst, char=None):
+def type_location_search(food_types_lst, char):
     if food_types_lst.is_empty():
         return
-    if len(char) > 1:
-        print('You have enter more than one character.')
-        print('Please enter a single character')
-        return
+
     current = food_types_lst.get_head_node()
     result = {}
     count = 0
     while current is not None:
-        if current.get_value()[0][0][0] == char.upper():
+        if str(current.get_value()[0]).startswith(char):
             result.setdefault(current.get_value()[0], []).append(count)
         current = current.next
         count += 1
     return result
 
 
-type_location_search(food_types, 'jo')
+chosen_food = ""
 
-for business in businesses:
-    types_of_food.append([business["categories"][0]['title']])
+while len(chosen_food) == 0:
+    user_input = str(input(
+        "\nWhat type of food would you like to eat?\nType the beginning of that food type and press enter to see if "
+        "it's here.\n")).upper()
+
+    match_types = type_location_search(food_types, user_input)
+    print("Here is what I found: ")
+    # Create a table
+    food_type_table = PrettyTable()
+    food_type_table.field_names = ["Food Type", "Count"]
+    for key, value in match_types.items():
+        food_type_table.add_row([key, len(value)])
+    print(food_type_table)
+
+    if len(match_types) > 1:
+        type_choice = str(input("What is your food type choice: "))
+        print(f'You have enter: {type_choice}')
+        user_continue = str(input("Do you want to continue: (enter 'y' for yes and 'n' for no): "))
+        if user_continue == 'y':
+            restaurants_table = PrettyTable()
+            restaurants_table.field_names = ["Restaurant", "Rating", "Price", "Address", "Open"]
+            types = match_types[type_choice]
+            for restaurants in types:
+                restaurants_lst = (restaurants_info.get_node_by_value(restaurants))
+                restaurants_table.add_row([restaurants_lst[0],
+                                           restaurants_lst[1],
+                                           restaurants_lst[2],
+                                           restaurants_lst[3],
+                                           restaurants_lst[4]])
+            print(restaurants_table)
+            # Ask user if they would like to search for more
+            repeat = str(input("Do you want to continue your search: (enter 'y' for yes and 'n' for no) "))
+            if repeat == 'y':
+                selected_food_type = ""
+            else:
+                print("Hope I satisfy your craving.")
+                quit()

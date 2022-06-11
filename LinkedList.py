@@ -115,3 +115,12 @@ class LinkedList:
                         idx.value = tmp
                     idx = idx.next
                 current = current.next
+
+    def get_node_by_value(self, val):
+        current = self.head
+        idx = 0
+        while current:
+            if idx == val:
+                return current.value
+            idx += 1
+            current = current.next
