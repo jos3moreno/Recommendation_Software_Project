@@ -5,7 +5,7 @@ from prettytable import PrettyTable
 from data import *
 
 YELP_END_POINT = "https://api.yelp.com/v3/businesses/search"
-API_Key = "kc2UdKkJld9TTFN1aNDwn0jMxb8n8uHv__u_hDPXgih_PHowe9EAUp4Zo6QZYlySHncfOpN9iT8S95v18ldr2gYT7wULw10tMuLXZXp-TyIk-Jcuv4RfoNT_qyqhYnYx"
+API_Key = "YELP_API"
 HEADER = {'Authorization': 'bearer %s' % API_Key}
 parameters = {
     'location': 'Kerny Mesa'
