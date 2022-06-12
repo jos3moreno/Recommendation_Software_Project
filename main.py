@@ -61,10 +61,10 @@ chosen_food = ""
 
 while len(chosen_food) == 0:
     user_input = str(input(
-        "\nWhat do you feel like eating?\nEnter the beginning of the food: ")).upper()
+        "\nWhat do you feel like eating?\nEnter the beginning of the food: "))
 
     match_types = type_location_search(food_types, user_input)
-    print(match_types)
+
     print("Here is what I found: ")
     # Create a table
     food_type_table = PrettyTable()
@@ -73,7 +73,7 @@ while len(chosen_food) == 0:
         food_type_table.add_row([key, len(value)])
     print(food_type_table)
 
-    if len(match_types) > 1:
+    if len(match_types) > 0:
         type_choice = str(input("What is your food type choice: "))
         print(f'You have enter: {type_choice}')
         user_continue = str(input("Do you want to continue: (enter 'y' for yes and 'n' for no): "))
@@ -81,6 +81,7 @@ while len(chosen_food) == 0:
             restaurants_table = PrettyTable()
             restaurants_table.field_names = ["Restaurant", "Rating", "Price", "Address", "Phone"]
             types = match_types[type_choice]
+            # Populate Table
             for restaurants in types:
                 restaurants_lst = (restaurants_info.get_node_by_value(restaurants))
                 restaurants_table.add_row([restaurants_lst[0],
