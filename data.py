@@ -1,56 +1,93 @@
 '''
-for business in businesses:
-    types_of_food.append([business["categories"][0]['title']])
-    restaurants_data.append([business["name"], business["rating"], business.get("price"),
-                             business["location"]["display_address"], business["is_closed"]])
+    This the Data sample collected from YELP API, I notice that the food type often
+    times does not show the correct type of food.
 '''
-types_of_food = []
-
-restaurants_data = []
-'''
-["Smokin J's BBQ", 4.5, '$$', ['14035 Midland Rd', 'Poway, CA 92064'], False]
-['Baba Kabob', 4.5, None, ['13538 Poway Rd', 'Ste C', 'Poway, CA 92064'], False]
-['Don Pollo', 4.5, '$$', ['13338 Poway Rd', 'Poway, CA 92064'], False]
-['In The Mix Yogurt', 4.5, '$', ['13450 Poway Rd', 'Poway, CA 92064'], False]
-['Wholly Crepe', 4.5, '$$', ['14045 Midland Rd', 'Poway, CA 92064'], False]
-["Niko's Halo-Halo & Sari-Sari", 4.0, '$$', ['14034 Poway Rd', 'Ste C', 'Poway, CA 92064'], False]
-['Sushi Lounge Poway', 4.0, '$$', ['12622 Poway Rd', 'Ste A', 'Poway, CA 92064'], False]
-['Taco Taco Poway', 4.0, '$', ['13429 Community Rd', 'Poway, CA 92064'], False]
-['Ichizen Sushi & Japanese Cuisine', 4.0, '$', ['13307 Poway Rd', 'Poway, CA 92064'], False]
-['El Ranchito Taco Shop', 4.0, '$', ['13654 Poway Rd', 'Ste 10', 'Poway, CA 92064'], False]
-['Greens Please Wellness Kitchen', 5.0, '$$', ['12202 Poway Rd', 'Ste 100', 'San Diego, CA 92064'], False]
-['The Kings Craft Coffee', 4.5, '$', ['14530 Espola Rd', 'Ste A', 'Poway, CA 92064'], False]
-['Tikka Lounge', 4.5, '$$', ['13513 Poway Rd', 'Poway, CA 92064'], False]
-['Mount Woodson Trail', 4.5, None, ['14644 Lake Poway Rd', 'Poway, CA 92074'], False]
-["Franco's Flapjack Family Restaurant", 4.0, '$$', ['14034 Poway Rd', 'Poway, CA 92064'], False]
-["O'Brien's Boulangerie", 4.5, '$$', ['13615 Stowe Dr', 'Poway, CA 92064'], False]
-['Mostra Coffee', 4.5, '$$', ['12045 Carmel Mountain Rd', 'Ste 302', 'San Diego, CA 92128'], False]
-['Tong Sake House', 4.5, '$$', ['12320 Poway Rd', 'Poway, CA 92064'], False]
-['The Boba Co', 4.0, '$', ['13526 Poway Rd', 'Ste A', 'Poway, CA 92064'], False]
-['Iron Pan Thai Kitchen', 4.0, '$$', ['13538 Poway Rd', 'Ste A', 'Poway, CA 92064'], False]
-'''
-'''
-[
-    0. ['Barbeque']
-    1. ['Mediterranean']
-    2. ['Chicken Shop']
-    3. ['Ice Cream & Frozen Yogurt']
-    4. ['Creperies']
-    5. ['Bubble Tea']
-    6. ['Sushi Bars']
-    7. ['Mexican']
-    8. ['Japanese']
-    9. ['Mexican']
-    10. ['Juice Bars & Smoothies']
-    11. ['Coffee Roasteries']
-    12. ['Indian']
-    13. ['Hiking']
-    14. ['Breakfast & Brunch']
-    15. ['Bakeries']
-    16. ['Coffee Roasteries']
-    17. ['Korean']
-    18. ['Bubble Tea']
-    19. ['Thai']    
+types_of_food = [
+    ['Barbeque'],
+    ['Breakfast & Brunch'],
+    ['Zoos'],
+    ['Breakfast & Brunch'],
+    ['Sushi Bars'],
+    ['Museums'],
+    ['Bakeries'],
+    ['Pizza'],
+    ['Italian'],
+    ['Bars'],
+    ['Thai'],
+    ['Seafood'],
+    ['Breakfast & Brunch'],
+    ['Breakfast & Brunch'],
+    ['Seafood'],
+    ['Korean'],
+    ['American (New)'],
+    ['Burgers'],
+    ['Thai'],
+    ['Taiwanese'],
+    ['Korean'],
+    ['Chinese'],
+    ['Ramen'],
+    ['Cajun/Creole'],
+    ['Ramen'],
+    ['Korean'],
+    ['Mediterranean'],
+    ['Ramen'],
+    ['Desserts'],
+    ['Chinese'],
+    ['Ice Cream & Frozen Yogurt'],
+    ['Ramen'],
+    ['Coffee & Tea'],
+    ['Cajun/Creole'],
+    ['Japanese'],
+    ['Sushi Bars'],
+    ['Seafood'],
+    ['Vietnamese'],
+    ['Desserts'],
+    ['Desserts']
 ]
 '''
-
+    The restaurant will hold this data: Name, Rating, Cost, Address, Close/Open (False = Open)
+'''
+restaurants_data = [
+    ["Phil's BBQ", 4.5, '$$', ['3750 Sports Arena Blvd', 'San Diego, CA 92110'], False],
+    ['Snooze, an A.M. Eatery', 4.5, '$$', ['3940 5th Ave', 'San Diego, CA 92103'], False],
+    ['San Diego Zoo', 4.5, None, ['2920 Zoo Dr', 'San Diego, CA 92101'], False],
+    ['Hash House A Go Go', 4.0, '$$', ['3628 5th Ave', 'San Diego, CA 92103'], False],
+    ['Sushi Ota', 4.5, '$$$', ['4529 Mission Bay Dr', 'San Diego, CA 92109'], False],
+    ['Balboa Park', 5.0, None, ['1549 El Prado', 'San Diego, CA 92101'], False],
+    ['Extraordinary Desserts', 4.0, '$$$', ['1430 Union St', 'San Diego, CA 92101'], False],
+    ['Bronx Pizza', 4.5, '$', ['111 Washington St', 'San Diego, CA 92103'], False],
+    ['CUCINA urbana', 4.5, '$$', ['505 Laurel St', 'San Diego, CA 92101'], False],
+    ['Werewolf', 4.5, '$$', ['627 Fourth Ave', 'San Diego, CA 92101'], False],
+    ['Bahn Thai', 4.5, '$$', ['4646 Park Blvd', 'Ste 3', 'San Diego, CA 92116'], False],
+    ['Ironside Fish & Oyster', 4.5, '$$', ['1654 India St', 'San Diego, CA 92101'], False],
+    ['Donut Bar', 4.5, '$', ['631 B St', 'San Diego, CA 92101'], False],
+    ['Great Maple - Hillcrest', 4.0, '$$', ['1451 Washington St', 'San Diego, CA 92103'], False],
+    ['Blue Water', 4.0, '$$', ['3667 India St', 'San Diego, CA 92103'], False],
+    ['Manna Heaven BBQ', 4.0, '$$', ['4428 Convoy St', 'Ste R210', 'San Diego, CA 92111'], False],
+    ['The Crack Shack', 4.0, '$$', ['2266 Kettner Blvd', 'San Diego, CA 92101'], False],
+    ["Hodad's", 4.0, '$$', ['5010 Newport Ave', 'San Diego, CA 92107'], False],
+    ['Plumeria Vegetarian', 4.5, '$$', ['4661 Park Blvd', 'San Diego, CA 92116'], False],
+    ['Din Tai Fung', 4.5, '$$', ['4301 La Jolla Village Dr', 'Bldg P Unit 2000', 'San Diego, CA 92122'], False],
+    ['Manna Heaven BBQ', 4.0, '$$', ['4428 Convoy St', 'Ste R210', 'San Diego, CA 92111'], '+18582783300'],
+    ['Steamy Piggy', 4.5, '$$', ['4681 Convoy St', 'San Diego, CA 92111'], '+18584920401'],
+    ['Tajima Ramen House', 4.0, '$$', ['4681 Convoy St', 'Ste I', 'San Diego, CA 92111'], '+18585767244'],
+    ["Bud's Louisiana Cafe", 4.5, '$$', ['4320 Viewridge Ave', 'Ste A', 'San Diego, CA 92123'], '+18585732837'],
+    ['Menya Ultra - San Diego', 4.5, '$$', ['8199 Clairemont Mesa Blvd', 'Ste M', 'San Diego, CA 92111'],
+     '+18585712010'],
+    ['Cross Street', 4.5, '$$', ['4403 Convoy St', 'San Diego, CA 92111'], '+18584306001'],
+    ['Tahini', 4.5, '$$', ['9119 Clairemont Mesa Blvd', 'Ste H', 'San Diego, CA 92123'], '+18587793272'],
+    ['Rakiraki Ramen & Tsukemen', 4.0, '$$', ['4646 Convoy St', 'Ste 102-A', 'San Diego, CA 92111'], '+18587717254'],
+    ['SomiSomi', 4.5, '$', ['4620 Convoy St', 'San Diego, CA 92111'], '+18589390388'],
+    ['Dumpling Inn', 4.0, '$$', ['4625 Convoy St', 'San Diego, CA 92111'], '+18582689638'],
+    ['Iceskimo', 4.5, '$$', ['4609 Convoy St', 'Ste B', 'San Diego, CA 92111'], '+18582161111'],
+    ['Nishiki Ramen', 4.0, '$$', ['8055 Armour St', 'Ste 201A', 'San Diego, CA 92111'], '+18589870222'],
+    ['Kung Fu Tea', 4.5, '$', ['4869 Convoy St', 'San Diego, CA 92111'], '+18583846497'],
+    ['Submarine Crab', 4.5, '$$', ['4647 Convoy St', 'Ste 101B', 'San Diego, CA 92111'], '+18589870333'],
+    ['Wa Dining OKAN', 4.5, '$$', ['3860 Convoy St', 'Ste 110', 'San Diego, CA 92111'], '+18582790941'],
+    ['Kura Revolving Sushi Bar', 4.0, '$$', ['4609 Convoy St', 'Ste F', 'San Diego, CA 92111'], '+18587154605'],
+    ["Adrian's Surf N' Turf Grill", 5.0, '$$', ['9353 Clairemont Mesa Blvd', 'Ste L1', 'San Diego, CA 92123'],
+     '+18588361067'],
+    ['Phuong Trang', 4.0, '$$', ['4170 Convoy St', 'San Diego, CA 92111'], '+18585656750'],
+    ['Boba Bar and Desserts', 4.5, '$', ['4619 Convoy St', 'San Diego, CA 92111'], '+18582560506'],
+    ['MNGO cafe', 4.0, '$$', ['4176 Convoy St', 'San Diego, CA 92111'], '+18589565995'],
+]
